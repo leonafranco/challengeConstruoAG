@@ -1,7 +1,14 @@
 package com.challenge.ChallengeConstruoAG.entities;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "U_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
