@@ -23,5 +23,29 @@ public class UserService {
         Optional<User> u = repository.findById(id);
         return u.get();
     }
+    public User insert(User u) {
+        return repository.save(u);
+    }
 
+    public User update(Integer id, User u){
+        try {
+            User user = repository.getReferenceById(id);
+            user.setName(u.getName());
+            user.setEmail(u.getEmail());
+            user.setPassword(u.getPassword());
+            repository.save(user);
+            return user;
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        return u;
+    }
+
+    public void delete(Integer id) {
+        try {
+            repository.deleteById(id);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

@@ -26,4 +26,16 @@ public class OrderService {
         return o.get();
     }
 
+    public Order insert(Order u) {
+        return repository.save(u);
+    }
+
+    public void delete(Integer id) {
+        try {
+            repository.deleteById(id);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }

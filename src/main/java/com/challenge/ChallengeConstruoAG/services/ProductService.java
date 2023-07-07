@@ -25,4 +25,30 @@ public class ProductService {
         return p.get();
     }
 
+    public Product insert(Product u) {
+        return repository.save(u);
+    }
+
+    public Product update(Integer id, Product u){
+        try {
+            Product product = repository.getReferenceById(id);
+            product.setName(u.getName());
+            product.setPrice(u.getPrice());
+            product.setType(u.getType());
+            repository.save(product);
+            return product;
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        return u;
+    }
+
+    public void delete(Integer id) {
+        try {
+            repository.deleteById(id);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }
