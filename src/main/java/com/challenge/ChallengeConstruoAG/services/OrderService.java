@@ -1,8 +1,12 @@
 package com.challenge.ChallengeConstruoAG.services;
 
 import com.challenge.ChallengeConstruoAG.entities.Order;
+import com.challenge.ChallengeConstruoAG.entities.OrderProduct;
+import com.challenge.ChallengeConstruoAG.entities.Product;
 import com.challenge.ChallengeConstruoAG.entities.User;
+import com.challenge.ChallengeConstruoAG.repositories.OrderProductRepository;
 import com.challenge.ChallengeConstruoAG.repositories.OrderRepository;
+import com.challenge.ChallengeConstruoAG.repositories.ProductRepository;
 import com.challenge.ChallengeConstruoAG.repositories.UserRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,10 @@ public class OrderService {
 
     @Autowired
     private OrderRepository repository;
+    @Autowired
+    OrderProductRepository orderProductRepository;
+    @Autowired
+    ProductRepository productRepository;
 
     public List<Order> findAll() {
         return repository.findAll();
@@ -38,4 +46,18 @@ public class OrderService {
         }
     }
 
+    public OrderProduct addCart(Integer orderId, Integer productId, Integer quantity) {
+        Optional<Product> p = productRepository.findById(productId);
+        Optional<Order> o = repository.findById(orderId);
+        if (!p.isPresent()) throw new IllegalArgumentException("Product not found");
+        if (!p.isPresent()) throw new IllegalArgumentException("Product not found");
+        if (!p.isPresent()) throw new IllegalArgumentException("Product not found");
+        Product product = p.get();
+        Order order = o.get();
+        OrderProduct orderProduct = new OrderProduct(order, product, quantity, product.getPrice());
+        orderProductRepository.save(orderProduct);
+
+        return orderProduct;
+
+    }
 }
