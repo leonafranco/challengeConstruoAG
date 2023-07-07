@@ -33,8 +33,8 @@ public class TestConfig implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1,u2));
 
 
-        Order o1 = new Order(null, timeStampMillis);
-        Order o2 = new Order(null, timeStampMillis);
+        Order o1 = new Order(null, timeStampMillis, u1);
+        Order o2 = new Order(null, timeStampMillis, u1);
 
         orderRepository.saveAll(Arrays.asList(o1,o2));
 

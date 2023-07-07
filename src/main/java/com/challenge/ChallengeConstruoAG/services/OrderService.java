@@ -4,6 +4,7 @@ import com.challenge.ChallengeConstruoAG.entities.Order;
 import com.challenge.ChallengeConstruoAG.entities.User;
 import com.challenge.ChallengeConstruoAG.repositories.OrderRepository;
 import com.challenge.ChallengeConstruoAG.repositories.UserRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
