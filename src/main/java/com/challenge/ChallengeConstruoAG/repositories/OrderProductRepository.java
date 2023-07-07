@@ -1,9 +1,8 @@
 package com.challenge.ChallengeConstruoAG.repositories;
 
 import com.challenge.ChallengeConstruoAG.entities.Order;
-import com.challenge.ChallengeConstruoAG.entities.Product;
+import com.challenge.ChallengeConstruoAG.entities.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Product, Integer> {
-
+public interface OrderProductRepository extends JpaRepository<OrderProduct, Integer> {
 }

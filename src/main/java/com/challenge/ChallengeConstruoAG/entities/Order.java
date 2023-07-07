@@ -2,6 +2,9 @@ package com.challenge.ChallengeConstruoAG.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "O_order")
 public class Order {
@@ -14,6 +17,17 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @OneToMany(mappedBy = "id.order")
+    private List<OrderProduct> product = new ArrayList<>();
+
+    public List<OrderProduct> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<OrderProduct> product) {
+        this.product = product;
+    }
 
     public User getClient() {
         return client;
